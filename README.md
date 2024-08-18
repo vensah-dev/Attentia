@@ -1,4 +1,4 @@
-![icon 128x128](https://github.com/user-attachments/assets/b55bf4a7-3d4f-4f3e-94a7-77eaa261ef2d)
+![icon 128x128](https://github.com/user-attachments/assets/834b89f2-60e7-400e-b2da-bdf83ce8f714)
 # Attentia 
 
 ### About
