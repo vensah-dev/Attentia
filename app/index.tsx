@@ -1,16 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import {Stack} from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
+import {Link} from 'expo-router'
 
-const RootLayout = () => {
+export default function App(){
   return (
-    <Stack>
-      <Stack.Screen name="index" options ={{headerShown: false}}/>
-    </Stack>
+    <View style={styles.main}>
+      <Text style={styles.text}>Hello, world!</Text>
+      <StatusBar style='auto'/>
+
+      <Link href="/profile" style={{color: 'blue'}}>Profile</Link>
+    </View>
   )
 }
 
-export default RootLayout
 
 const styles = StyleSheet.create({
   main: {
