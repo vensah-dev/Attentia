@@ -1,4 +1,5 @@
-![icon](https://github.com/user-attachments/assets/aeb6a768-4318-4f37-acd4-2251fc699a48)
+![icon 128x128](https://github.com/user-attachments/assets/b55bf4a7-3d4f-4f3e-94a7-77eaa261ef2d)
+
 # Attentia 
 
 
