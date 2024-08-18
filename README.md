@@ -1,7 +1,7 @@
 
 <p align="center">
   <img width="128" height="128" src="https://github.com/user-attachments/assets/066628c4-1148-4d18-8bb3-acde1bd24958">
-  <p style="font-size: 4rem;" align="center">Attentia</p> 
+  <p style="font-size: 40rem;" align="center">Attentia</p> 
 </p>
 
 ### About
