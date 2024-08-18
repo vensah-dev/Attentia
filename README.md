@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img width="460" height="300" src="[https://picsum.photos/460/300](https://github.com/user-attachments/assets/066628c4-1148-4d18-8bb3-acde1bd24958)">
+  <img width="460" height="300" src="https://github.com/user-attachments/assets/066628c4-1148-4d18-8bb3-acde1bd24958">
   # Attentia 
 </p>
 
