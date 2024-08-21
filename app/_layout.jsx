@@ -1,7 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import {React, useEffect} from 'react'
-import {SplashScreen, Stack} from 'expo-router'
+import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from "expo-font";
+import {createNativeStackNavigator} from "@react-navigation/native-stack"
 
 SplashScreen.preventAutoHideAsync();
 
@@ -26,12 +28,11 @@ export default function App(){
   }, [fontsLoaded, error])
 
   if(!fontsLoaded && !error) return null;
-
+  
   return (
     <Stack>
-      <Stack.Screen name="index" options ={{headerShown: false}}/>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   )
 }
-
 

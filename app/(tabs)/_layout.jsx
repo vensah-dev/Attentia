@@ -1,13 +1,13 @@
 import { View, Text, Image } from 'react-native'
-import { Tabs,  Redirect } from 'expo-router'
+import { Tabs} from 'expo-router'
 import React from 'react'
-import {icons, Colors} from "../../constants"
+import {icons} from "../../constants"
 import {colors} from "../../constants/colors"
 
 
 const TabIcon = ({icon, name, color, focused}) => {
   return(
-    <View className="items-center justify-center">
+    <View className="items-center justify-center gap-1">
       <Image
         source={icon}
         resizeMode='contain'
@@ -15,14 +15,15 @@ const TabIcon = ({icon, name, color, focused}) => {
         className="w-6 h-6"
       />
 
-      <Text className={`${focused ? 'font-pregular' : 'font-plight'} text-xs`}>
+      <Text style={{color: color}} className="text-xs">
         {name}
       </Text>
     </View>
   )
 }
 
-const _layout = () => {
+export default function App(){
+
   return (
     <>
       <Tabs 
@@ -30,15 +31,20 @@ const _layout = () => {
           tabBarShowLabel: false,
           tabBarActiveTintColor: colors.accentPrimary,
           tabBarInactiveTintColor: colors.white100,
+          tabBarStyle:{
+            backgroundColor: colors.primary,
+            borderTopWidth: 1,
+            borderTopColor: colors.secondary,
+          },
 
         }}
       >
 
         <Tabs.Screen
-          name = "home"
+          name = "index"
           options={{
             title: "Home",
-            headerShown: true,
+            headerShown: false,
             tabBarIcon: ({color, focused}) => (
               <TabIcon
                 icon={icons.home}
@@ -54,7 +60,7 @@ const _layout = () => {
           name = "exercises"
           options={{
             title: "Exercises",
-            headerShown: true,
+            headerShown: false,
             tabBarIcon: ({color, focused}) => (
               <TabIcon
                 icon={icons.lightBulb}
@@ -70,7 +76,7 @@ const _layout = () => {
           name = "leaderboards"
           options={{
             title: "Leaderboards",
-            headerShown: true,
+            headerShown: false,
             tabBarIcon: ({color, focused}) => (
               <TabIcon
                 icon={icons.trophy}
@@ -86,7 +92,7 @@ const _layout = () => {
           name = "statistics"
           options={{
             title: "Statistics",
-            headerShown: true,
+            headerShown: false,
             tabBarIcon: ({color, focused}) => (
               <TabIcon
                 icon={icons.stats}
@@ -102,5 +108,3 @@ const _layout = () => {
     </>
   )
 }
-
-export default _layout
