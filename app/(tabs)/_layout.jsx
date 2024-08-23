@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, StatusBar } from 'react-native'
 import { Tabs} from 'expo-router'
 import React from 'react'
 import {icons} from "../../constants"
@@ -26,6 +26,8 @@ export default function App(){
 
   return (
     <>
+    <StatusBar style="light"/>
+
       <Tabs 
         screenOptions={{
           tabBarShowLabel: false,
@@ -92,7 +94,8 @@ export default function App(){
           name = "statistics"
           options={{
             title: "Statistics",
-            headerShown: false,
+            headerShown: true,
+            headerLargeTitle: true,
             tabBarIcon: ({color, focused}) => (
               <TabIcon
                 icon={icons.stats}

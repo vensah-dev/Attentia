@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const exercises = () => {
+export default function ExercisesScreen(){
   return (
     <View>
       <Text>exercises</Text>
@@ -9,4 +9,3 @@ const exercises = () => {
   )
 }
 
-export default exercises
