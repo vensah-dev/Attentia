@@ -136,7 +136,7 @@ export function FixedHeader({title}){
         </Link>
 
 
-        <Text className="text-white100 font-plight text-h1">{title}</Text>
+        <Text className="text-white100 font-pmedium text-h1">{title}</Text>
 
       </View> 
     </View>

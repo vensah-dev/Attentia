@@ -112,12 +112,12 @@ const LeaderboardItem = ({user, index}) => (
 
 );
 
-
 export default function LeaderboardsScreen(){
 
   return (
     <>
       <FixedHeader title={"Leaderboards"}/>
+      
       <FlatList
         data={users.sort((a, b) => (a.score > b.score ? -1 : 1))}
         renderItem={({item}) => <LeaderboardItem user={item} index={users.findIndex((temp) => temp["score"] === item.score)} />}

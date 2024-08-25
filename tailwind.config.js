@@ -1,26 +1,23 @@
 /** @type {import('tailwindcss').Config} */
+
+import {colors} from "./constants/colors"
 module.exports = {
     content: ["./App.{js,jsx,ts,tsx}", "./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
     theme: {
       extend: {
         colors: {
-          primary: "#18161D",
-          secondary: "#2B2735",
-          tertiary: "#484158",
-          accentPrimary: "#9370DB",
-          accentSecondary: "#D8B2FF",
-          white100: "#F2F2F2",
-          white100: "#F2F2F2",
-          white90: 'rgba(242, 242, 242, 0.9)',
-          white75: 'rgba(242, 242, 242, 0.75)',
-          white50: 'rgba(242, 242, 242, 0.5)',
-          white25: 'rgba(242, 242, 242, 0.25)',
-          white15: 'rgba(242, 242, 242, 0.15)',
-          white5: 'rgba(242, 242, 242, 0.05)',
-        //   white75: rgb(242, 242, 242, 0.75),
-        //   white50: rgb(242, 242, 242, 0.5),
-        //   white25: rgb(242, 242, 242, 0.25),
-        //   white5: rgb(242, 242, 242, 0.05),
+          primary: colors.primary,
+          secondary: colors.secondary,
+          tertiary: colors.tertiary,
+          accentPrimary: colors.accentPrimary,
+          accentSecondary: colors.accentSecondary,
+          white100: colors.white100,
+          white90: colors.white90,
+          white75: colors.white75,
+          white50: colors.white50,
+          white25: colors.white25,
+          white15: colors.white15,
+          white5: colors.white5,
         },
         fontFamily: {
           pthin: ["Poppins-Thin", "sans-serif"],
@@ -34,7 +31,7 @@ module.exports = {
           pblack: ["Poppins-Black", "sans-serif"],
         },
         fontSize: {
-          "xs": '0.694rem',
+          "kitmin": '0.694rem',
           sm: '0.833rem',
           base: '1rem',
           "h1": '2.986rem',
@@ -47,11 +44,5 @@ module.exports = {
         },
       },
     },
-    plugins: [
-      // plugin(function({ addBase }) {
-      //  addBase({
-      //     'html': { fontSize: "14px" },
-      //   })
-      // }),
-    ],
+    plugins: [],
   };

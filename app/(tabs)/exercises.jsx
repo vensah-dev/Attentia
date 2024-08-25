@@ -11,35 +11,86 @@ import {FixedHeader} from './_layout';
 
 const exercises = [
   {
-    image: images.squareBreathing,
-    title: "Square Breathing",
-    category: "Calming",
+    category:"Today's Exercises",
+    values:[
+      {
+        image: images.squareBreathing,
+        title: "Square Breathing",
+    
+      },
+      {
+        image: images.squareBreathing,
+        title: "Duo-Decohedron Breathing",
 
+      },
+      {
+        image: images.squareBreathing,
+        title: "hyper Duo-Decohedron Breathing?",
+
+      },
+    ]
   },
   {
-    image: images.squareBreathing,
-    title: "Triangle Breathing",
-    category: "Calming",
+    category:"Calm",
+    values:[
+      {
+        image: images.squareBreathing,
+        title: "Square Breathing",
+    
+      },
+      {
+        image: images.squareBreathing,
+        title: "Duo-Decohedron Breathing",
 
+      },
+      {
+        image: images.squareBreathing,
+        title: "hyper Duo-Decohedron Breathing?",
+
+      },
+    ]
   },
   {
-    image: images.squareBreathing,
-    title: "Hexagonal Breathing",
-    category: "Calming",
-
+    category:"Focus",
+    values:[
+      {
+        image: images.mouseRun,
+        title: "Mouse Run",
+    
+      },
+      {
+        image: images.flow,
+        title: "Flow",
+    
+      },
+    ]
   },
   {
-    image: images.squareBreathing,
-    title: "Duo-Decohedron Breathing",
-    category: "Calming",
-
+    category:"Analysis",
+    values:[
+      {
+        image: images.mouseRun,
+        title: "Deep Reading",
+    
+      },
+      {
+        image: images.flow,
+        title: "Tracing",
+    
+      },
+    ]
   },
 
 ];
 
-const Exercise = ({exercise}) => (
-  <View key={exercise.title} className="w-208 h-143">
-    <Image source={exercise.image} className="w-h-full" resizeMode='scale'/>
+const Exercise = ({exercise, category}) => (
+  <View className="gap-2 pr-4">
+    <Image source={exercise.image} className="w-[144px] h-[99px] rounded-[8px] border-white5 border" resizeMode='scale'/>
+    <View className="">
+      <Text className="text-white100 font-plight w-[144px]">{exercise.title.toString()}</Text>
+      <Text className="text-white75 font-plight w-[144px]">{category.toString()}</Text>
+    </View>
+
   </View>
 
 );
@@ -48,14 +99,34 @@ export default function ExerciseScreen(){
 
   return (
     <>
-      <FixedHeader title={"Exercises"}/>
-      <FlatList
-        data={exercises.sort((a, b) => (a.score > b.score ? -1 : 1))}
-        renderItem={({item}) => <Exercise exercise={item} />}
-        keyExtractor={item => exercises.findIndex((temp) => temp["title"] === item.title)}
-        showsVerticalScrollIndicator={false}
-        className="bg-primary"
-      />
+
+      <View className="flex-1">
+        <FixedHeader title={"Exercises"}/>
+
+        <FlatList
+          data={exercises}
+          renderItem={({ item: cat }) => (
+
+            <View className="flex-1">
+              <Text className="text-white100 font-pmedium text-h4 pb-4 pl-6">{cat.category.toString()}</Text>
+
+              <FlatList
+                data={cat.values}
+                renderItem={({item}) => <Exercise exercise={item} category={""} />}
+                keyExtractor={item => cat.values.findIndex((temp) => temp["title"] === item.title)}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                className="bg-primary pl-6"
+              />
+            </View>
+            
+          )}
+          keyExtractor={(item, index) => index}
+          showsVerticalScrollIndicator={false}
+          className="bg-primary"
+        />
+      </View>
+
     </>
   )
 }
