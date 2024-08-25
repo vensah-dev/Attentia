@@ -1,13 +1,18 @@
 import { View, Text, Image } from 'react-native'
 import {React, useEffect} from 'react'
-import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from "expo-font";
-import {createNativeStackNavigator} from "@react-navigation/native-stack"
+import { Stack } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 SplashScreen.preventAutoHideAsync();
 
+export const unstable_settings = {
+  initialRouteName: '(tabs)',
+};
+
 export default function App(){
+
   const [fontsLoaded, error] = useFonts({
     "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
     "Poppins-Bold": require("../assets/fonts/Poppins-Bold.ttf"),
@@ -29,13 +34,13 @@ export default function App(){
 
   if(!fontsLoaded && !error) return null;
   
-  return (
-    <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="profile" options={{ headerShown: false }} />
-        {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
-    </Stack>
+  return ( 
+    // <SafeAreaView>
+      <Stack screenOptions={{headerShown: false}}>
+        <Stack.Screen name="(tabs)" />
+      </Stack>
+    // </SafeAreaView>
+
   )
 }
 

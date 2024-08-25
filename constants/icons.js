@@ -2,6 +2,8 @@ import home from "../assets/icons/home.png";
 import lightBulb from "../assets/icons/light-bulb.png";
 import trophy from "../assets/icons/trophy.png";
 import stats from "../assets/icons/stats.png";
+import bullseye from "../assets/icons/bullseye.png";
+
 // import leftArrow from "../assets/icons/left-arrow.png";
 // import menu from "../assets/icons/menu.png";
 // import search from "../assets/icons/search.png";
@@ -17,4 +19,5 @@ export default {
   lightBulb,
   trophy,
   stats,
+  bullseye,
 };

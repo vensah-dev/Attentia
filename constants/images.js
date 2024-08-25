@@ -6,6 +6,8 @@ import logo from "../assets/images/logo.png";
 import logoSmall from "../assets/images/logo-small.png";
 import empty from "../assets/images/empty.png";
 import pfp from "../assets/images/pfp.png";
+import placeholderLeaderboards from "../assets/images/placeholder-leaderboards.png";
 
 
-export default { profile, thumbnail, cards, path, logo, logoSmall, empty, pfp };
+
+export default { profile, thumbnail, cards, path, logo, logoSmall, empty, placeholderLeaderboards, pfp };

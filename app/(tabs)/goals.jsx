@@ -7,11 +7,9 @@ import {images} from "../../constants"
 import {Link, Stack} from "expo-router"
 import "../../global.css"
 
-export default function HomeScreen(){
+export default function GoalsScreen(){
   return (
-    <>
-    <StatusBar style="light"/>
-
+    <View>
     <ScrollView className="bg-primary h-full">
       {/* header */}
       <View className="py-8 px-6 bg-primary">
@@ -27,7 +25,7 @@ export default function HomeScreen(){
           </Link>
 
 
-          <Text className="text-white100 font-plight text-h1">Home</Text>
+          <Text className="text-white100 font-plight text-h1">Goals</Text>
 
         </View> 
       </View>
@@ -45,8 +43,6 @@ export default function HomeScreen(){
       </View>
 
     </ScrollView>
-    </>
+    </View>
   )
 }
-
-

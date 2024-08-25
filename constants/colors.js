@@ -20,5 +20,11 @@ export const colors = {
   accentPrimary: "#9370DB",
   accentSecondary: "#D8B2FF",
   white100: "#F2F2F2",
+  white90: 'rgba(242, 242, 242, 0.9)',
+  white75: 'rgba(242, 242, 242, 0.75)',
+  white50: 'rgba(242, 242, 242, 0.5)',
+  white25: 'rgba(242, 242, 242, 0.25)',
+  white15: 'rgba(242, 242, 242, 0.15)',
+  white5: 'rgba(242, 242, 242, 0.05)',
 };
 
