@@ -7,6 +7,8 @@ import {images} from "../../constants"
 import {Link, Stack} from "expo-router"
 import "../../global.css"
 import { FlatList } from 'react-native';
+import {FixedHeader} from './_layout';
+
 
 const users = [
   {
@@ -110,37 +112,16 @@ const LeaderboardItem = ({user, index}) => (
 
 );
 
-const ListHeader = ({title}) => (
-  <View className="py-8 px-6 bg-primary">
-    <View className="flex-1">
-      <Link href="profile" className="self-end">
-        <Avatar
-          size={48}
-          rounded
-          overlayContainerStyle={{backgroundColor: colors.secondary}}
-          source={images.pfp}
-          activeOpacity={0.7}
-        />
-      </Link>
-
-
-      <Text className="text-white100 font-plight text-h1">{title}</Text>
-
-    </View> 
-  </View>
-)
 
 export default function LeaderboardsScreen(){
 
   return (
     <>
-
+      <FixedHeader title={"Leaderboards"}/>
       <FlatList
         data={users.sort((a, b) => (a.score > b.score ? -1 : 1))}
         renderItem={({item}) => <LeaderboardItem user={item} index={users.findIndex((temp) => temp["score"] === item.score)} />}
-        keyExtractor={item => item.index}
-        ListHeaderComponent= {<ListHeader title={"Leaderboards"}/>}
-        stickyHeaderIndices={[0]}
+        keyExtractor={item => users.findIndex((temp) => temp["score"] === item.score)}
         showsVerticalScrollIndicator={false}
         className="bg-primary"
       />

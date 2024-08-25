@@ -1,9 +1,13 @@
 import { View, Text, Image, StatusBar } from 'react-native'
-import { Tabs} from 'expo-router'
+import { Tabs, Link} from 'expo-router'
+import { Avatar } from 'react-native-elements';
 import React from 'react'
 import {icons} from "../../constants"
-import {colors} from "../../constants/colors"
 import { SafeAreaView } from 'react-native-safe-area-context'
+import {colors} from "../../constants/colors"
+import {images} from "../../constants";
+import "../../global.css";
+
 
 
 const TabIcon = ({icon, name, color, focused}) => {
@@ -114,5 +118,27 @@ export default function TabsScreen(){
       </Tabs>
     </SafeAreaView>
     </>
+  )
+}
+
+export function FixedHeader({title}){
+  return(
+    <View className="py-8 px-6 bg-primary h-[152px]">
+      <View className="flex-1">
+        <Link href="profile" className="self-end">
+          <Avatar
+            size={48}
+            rounded
+            overlayContainerStyle={{backgroundColor: colors.secondary}}
+            source={images.pfp}
+            activeOpacity={0.7}
+          />
+        </Link>
+
+
+        <Text className="text-white100 font-plight text-h1">{title}</Text>
+
+      </View> 
+    </View>
   )
 }

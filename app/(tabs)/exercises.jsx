@@ -1,78 +1,58 @@
-import { Text, View, ScrollView, Image, SafeAreaView } from 'react-native'
+import { Text, View, ScrollView, Image, SafeAreaView } from 'react-native';
 import { Avatar } from 'react-native-elements';
-import React from 'react'
-import { StatusBar,  } from 'expo-status-bar'
-import {colors} from "../../constants/colors"
-import {images} from "../../constants"
-import {Link, Stack} from "expo-router"
-import "../../global.css"
+import React from 'react';
+import { StatusBar,  } from 'expo-status-bar';
+import {colors} from "../../constants/colors";
+import {images} from "../../constants";
+import {Link, Stack} from "expo-router";
+import "../../global.css";
 import { FlatList } from 'react-native';
+import {FixedHeader} from './_layout';
 
-const users = [
+const exercises = [
   {
-    name: "Vensah",
-    score: 1500,
+    image: images.squareBreathing,
+    title: "Square Breathing",
+    category: "Calming",
+
+  },
+  {
+    image: images.squareBreathing,
+    title: "Triangle Breathing",
+    category: "Calming",
+
+  },
+  {
+    image: images.squareBreathing,
+    title: "Hexagonal Breathing",
+    category: "Calming",
+
+  },
+  {
+    image: images.squareBreathing,
+    title: "Duo-Decohedron Breathing",
+    category: "Calming",
+
   },
 
 ];
 
-const Exercise = ({user, index}) => (
-  <View key={index} className={`${index%2==0 ? "bg-tertiary":"bg-secondary"} h-[56px] justify-center w-full`}>
-    <View className="flex-row justify-between items-center mx-6">
-
-      <View className="flex-row justify-between items-center gap-[24px]">
-        <Text className="w-[24px] font-pbold text-h5 text-white100">{index+1}</Text>
-
-        <Avatar
-          size={40}
-          rounded
-          title={user.name[0].toUpperCase()}
-          overlayContainerStyle={{backgroundColor: colors.accentPrimary}}
-          titleStyle={{fontSize: 24, fontWeight: "light"}}
-        />
-
-        <Text className="text-white100 font-plight text-h5">{user.name}</Text>
-      </View>
-
-      <View className={`bg-white15 rounded-[567px] h-[24] w-[64px] flex-row justify-center items-center`}>
-        <Text className="text-white100 opacity-75 font-plight text-h6">{user.score}</Text>
-      </View>
-
-    </View>
+const Exercise = ({exercise}) => (
+  <View key={exercise.title} className="w-208 h-143">
+    <Image source={exercise.image} className="w-h-full" resizeMode='scale'/>
   </View>
 
 );
-
-const ListHeader = ({title}) => (
-  <View className="py-8 px-6 bg-primary">
-    <View className="flex-1">
-      <Link href="profile" className="self-end">
-        <Avatar
-          size={48}
-          rounded
-          overlayContainerStyle={{backgroundColor: colors.secondary}}
-          source={images.pfp}
-          activeOpacity={0.7}
-        />
-      </Link>
-
-
-      <Text className="text-white100 font-plight text-h1">{title}</Text>
-
-    </View> 
-  </View>
-)
 
 export default function ExerciseScreen(){
 
   return (
     <>
-
+      <FixedHeader title={"Exercises"}/>
       <FlatList
-        data={users.sort((a, b) => (a.score > b.score ? -1 : 1))}
-        renderItem={({item}) => <Exercise user={item} index={users.findIndex((temp) => temp["score"] === item.score)} />}
-        keyExtractor={item => item.index}
-        ListHeaderComponent= {<ListHeader title={"Exercises"}/>}
+        data={exercises.sort((a, b) => (a.score > b.score ? -1 : 1))}
+        renderItem={({item}) => <Exercise exercise={item} />}
+        keyExtractor={item => exercises.findIndex((temp) => temp["title"] === item.title)}
         showsVerticalScrollIndicator={false}
         className="bg-primary"
       />
