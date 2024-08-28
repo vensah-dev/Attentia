@@ -5,9 +5,10 @@ import { StatusBar,  } from 'expo-status-bar';
 import {colors} from "../../constants/colors";
 import {images} from "../../constants";
 import {Link, Stack} from "expo-router";
-import "../../global.css";
 import { FlatList } from 'react-native';
-import {FixedHeader} from './_layout';
+import {HeaderWithProfile} from './_layout';
+import "../../global.css";
+
 
 const exercises = [
   {
@@ -19,14 +20,14 @@ const exercises = [
     
       },
       {
-        image: images.squareBreathing,
-        title: "Duo-Decohedron Breathing",
+        image: images.spotDiff,
+        title: "Spot The Difference",
 
       },
       {
-        image: images.squareBreathing,
-        title: "hyper Duo-Decohedron Breathing?",
-
+        image: images.mouseRun,
+        title: "Mouse Run",
+    
       },
     ]
   },
@@ -39,8 +40,8 @@ const exercises = [
     
       },
       {
-        image: images.squareBreathing,
-        title: "Duo-Decohedron Breathing",
+        image: images.spotDiff,
+        title: "Spot The Difference",
 
       },
       {
@@ -84,11 +85,13 @@ const exercises = [
 ];
 
 const Exercise = ({exercise, category}) => (
-  <View className="gap-2 pr-4">
-    <Image source={exercise.image} className="w-[144px] h-[99px] rounded-[8px] border-white5 border" resizeMode='scale'/>
-    <View className="">
-      <Text className="text-white100 font-plight w-[144px]">{exercise.title.toString()}</Text>
-      <Text className="text-white75 font-plight w-[144px]">{category.toString()}</Text>
+  <View className="gap-2 pr-6">
+
+    <Image source={exercise.image} className="w-[144px] h-[99px] rounded-[8px] border-white5 border" resizeMode='contain'/>
+
+    <View>
+      <Text className="text-white75 text-base font-plight w-[144px]">{exercise.title.toString()}</Text>
+      <Text className="text-white50 text-base font-plight w-[144px]">{category.toString()}</Text>
     </View>
 
   </View>
@@ -98,35 +101,31 @@ const Exercise = ({exercise, category}) => (
 export default function ExerciseScreen(){
 
   return (
-    <>
+    <View>      
+      <FlatList
+        data={exercises}
+        renderItem={({ item: cat }) => (
 
-      <View className="flex-1">
-        <FixedHeader title={"Exercises"}/>
+          <View className="flex-1">
+            <Text className="text-white90 font-pregular text-h4 pt-6 pb-4 pl-6">{cat.category.toString()}</Text>
 
-        <FlatList
-          data={exercises}
-          renderItem={({ item: cat }) => (
+            <FlatList
+              data={cat.values}
+              renderItem={({item}) => <Exercise exercise={item} category={""} />}
+              keyExtractor={item => cat.values.findIndex((temp) => temp["title"] === item.title)}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              className="bg-primary ml-6 border-white15 border-b-[1px]"
+            />
+          </View>
+          
+        )}
+        keyExtractor={(item, index) => index}
+        className="bg-primary"
 
-            <View className="flex-1">
-              <Text className="text-white100 font-pmedium text-h4 pb-4 pl-6">{cat.category.toString()}</Text>
-
-              <FlatList
-                data={cat.values}
-                renderItem={({item}) => <Exercise exercise={item} category={""} />}
-                keyExtractor={item => cat.values.findIndex((temp) => temp["title"] === item.title)}
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-                className="bg-primary pl-6"
-              />
-            </View>
-            
-          )}
-          keyExtractor={(item, index) => index}
-          showsVerticalScrollIndicator={false}
-          className="bg-primary"
-        />
-      </View>
-
-    </>
+        showsVerticalScrollIndicator={false}
+        ListHeaderComponent={<HeaderWithProfile title={"Exercises"} />}
+      />
+    </View>
   )
 }

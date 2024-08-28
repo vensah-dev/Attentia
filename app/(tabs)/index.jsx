@@ -5,6 +5,7 @@ import { StatusBar,  } from 'expo-status-bar'
 import {colors} from "../../constants/colors"
 import {images} from "../../constants"
 import {Link, Stack} from "expo-router"
+import {HeaderWithProfile} from "./_layout"
 import "../../global.css"
 
 export default function HomeScreen(){
@@ -14,23 +15,7 @@ export default function HomeScreen(){
 
     <ScrollView className="bg-primary h-full">
       {/* header */}
-      <View className="py-8 px-6 bg-primary">
-        <View className="flex-1">
-          <Link href="profile" className="self-end">
-            <Avatar
-              size={48}
-              rounded
-              overlayContainerStyle={{backgroundColor: colors.secondary}}
-              source={images.pfp}
-              activeOpacity={0.7}
-            />
-          </Link>
-
-
-          <Text className="text-white100 font-plight text-h1">Home</Text>
-
-        </View> 
-      </View>
+      <HeaderWithProfile title={"Home"}/>
 
       <View className="bg-tertiary">
         <Text className="text-white100 opacity-75 m-8">item 1</Text>

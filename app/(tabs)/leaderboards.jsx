@@ -7,7 +7,7 @@ import {images} from "../../constants"
 import {Link, Stack} from "expo-router"
 import "../../global.css"
 import { FlatList } from 'react-native';
-import {FixedHeader} from './_layout';
+import {HeaderWithProfile} from './_layout';
 
 
 const users = [
@@ -90,7 +90,7 @@ const LeaderboardItem = ({user, index}) => (
     <View className="flex-row justify-between items-center mx-6">
 
       <View className="flex-row justify-between items-center gap-[24px]">
-        <Text className="w-[24px] font-pbold text-h5 text-white100">{index+1}</Text>
+        <Text className="w-[24px] font-pbold text-h5 text-white75">{index+1}</Text>
 
         <Avatar
           size={40}
@@ -100,7 +100,7 @@ const LeaderboardItem = ({user, index}) => (
           titleStyle={{fontSize: 24, fontWeight: "light"}}
         />
 
-        <Text className="text-white100 font-plight text-h5">{user.name}</Text>
+        <Text className="text-white75 font-plight text-h5">{user.name}</Text>
       </View>
 
       <View className={`bg-white15 rounded-[567px] h-[24] w-[64px] flex-row justify-center items-center`}>
@@ -116,15 +116,17 @@ export default function LeaderboardsScreen(){
 
   return (
     <>
-      <FixedHeader title={"Leaderboards"}/>
-      
       <FlatList
         data={users.sort((a, b) => (a.score > b.score ? -1 : 1))}
-        renderItem={({item}) => <LeaderboardItem user={item} index={users.findIndex((temp) => temp["score"] === item.score)} />}
+        renderItem={({item}) => (<LeaderboardItem user={item} index={users.findIndex((temp) => temp["score"] === item.score)}/>)}
         keyExtractor={item => users.findIndex((temp) => temp["score"] === item.score)}
-        showsVerticalScrollIndicator={false}
         className="bg-primary"
+
+        showsVerticalScrollIndicator={false}
+        scrollEnabled={true}
+        ListHeaderComponent={<HeaderWithProfile title={"Leaderboards"} />}
       />
-    </>
+   </>
+
   )
 }

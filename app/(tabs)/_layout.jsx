@@ -1,11 +1,12 @@
-import { View, Text, Image, StatusBar } from 'react-native'
-import { Tabs, Link} from 'expo-router'
+import { View, Text, Image, StatusBar, TouchableOpacity } from 'react-native'
+import { Tabs, Link, useRouter} from 'expo-router'
 import { Avatar } from 'react-native-elements';
 import React from 'react'
-import {icons} from "../../constants"
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {colors} from "../../constants/colors"
 import {images} from "../../constants";
+import {icons} from "../../constants"
+
 import "../../global.css";
 
 
@@ -121,10 +122,11 @@ export default function TabsScreen(){
   )
 }
 
-export function FixedHeader({title}){
+export function HeaderWithProfile({title}){
   return(
-    <View className="py-8 px-6 bg-primary h-[152px]">
-      <View className="flex-1">
+    <View className="mt-8 mb-6 mx-6 bg-primary">
+      <View>
+        
         <Link href="profile" className="self-end">
           <Avatar
             size={48}
@@ -135,10 +137,30 @@ export function FixedHeader({title}){
           />
         </Link>
 
-
-        <Text className="text-white100 font-pmedium text-h1">{title}</Text>
+        <Text className="text-white100 font-psemibold text-h1 pb-2">{title}</Text>
 
       </View> 
+    </View>
+  )
+}
+
+export function HeaderPlain({title}){
+  return(
+    <View className="mx-6 mb-6 bg-primary">
+
+        <Text className="text-white100 font-psemibold text-h1">{title}</Text>
+
+    </View>
+  )
+}
+
+export function BackButton({router}){
+  return(
+    <View className="bg-primary">
+
+        <TouchableOpacity className="self-start px-4 py-2" onPress={() => router.back()}>
+          <Image source={icons.leftArrow} resizeMode='contain' className="w-12 h-12" tintColor={colors.white75}/>
+        </TouchableOpacity>
     </View>
   )
 }

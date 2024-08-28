@@ -3,6 +3,8 @@ import lightBulb from "../assets/icons/light-bulb.png";
 import trophy from "../assets/icons/trophy.png";
 import stats from "../assets/icons/stats.png";
 import bullseye from "../assets/icons/bullseye.png";
+import leftArrow from "../assets/icons/arrow-left-short.png";
+
 
 // import leftArrow from "../assets/icons/left-arrow.png";
 // import menu from "../assets/icons/menu.png";
@@ -20,4 +22,5 @@ export default {
   trophy,
   stats,
   bullseye,
+  leftArrow,
 };

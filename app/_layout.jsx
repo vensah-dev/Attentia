@@ -35,12 +35,10 @@ export default function App(){
   if(!fontsLoaded && !error) return null;
   
   return ( 
-    // <SafeAreaView>
       <Stack screenOptions={{headerShown: false}}>
         <Stack.Screen name="(tabs)" />
       </Stack>
-    // </SafeAreaView>
+
 
   )
 }
-

@@ -10,8 +10,23 @@ import placeholderLeaderboards from "../assets/images/placeholder-leaderboards.p
 import mouseRun from "../assets/images/Mouse-Run.png";
 import flow from "../assets/images/Flow.png";
 import squareBreathing from "../assets/images/Square-Breathing.png";
+import spotDiff from "../assets/images/spot-the-diff.png";
 
 
 
 
-export default { profile, thumbnail, cards, path, logo, logoSmall, empty, placeholderLeaderboards, pfp, mouseRun, flow, squareBreathing };
+export default { 
+    profile, 
+    thumbnail, 
+    cards, 
+    path, 
+    logo, 
+    logoSmall, 
+    empty, 
+    placeholderLeaderboards, 
+    pfp, 
+    mouseRun, 
+    flow, 
+    squareBreathing, 
+    spotDiff
+};
