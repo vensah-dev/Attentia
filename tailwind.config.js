@@ -16,8 +16,9 @@ module.exports = {
           white75: colors.white75,
           white50: colors.white50,
           white25: colors.white25,
-          white15: colors.white15,
+          white10: colors.white10,
           white5: colors.white5,
+          whiteClearGrad: 'linear-gradient(90deg, rgba(230, 230, 230, 0.00) 37.69%, #E6E6E6 100%)',
         },
         fontFamily: {
           pthin: ["Poppins-Thin", "sans-serif"],

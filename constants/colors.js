@@ -14,7 +14,7 @@ export const colors = {
   white75: 'rgba(230, 230, 230, 0.75)',
   white50: 'rgba(230, 230, 230, 0.5)',
   white25: 'rgba(230, 230, 230, 0.25)',
-  white15: 'rgba(230, 230, 230, 0.15)',
+  white10: 'rgba(230, 230, 230, 0.1)',
   white5: 'rgba(230, 230, 230, 0.05)',
 };
 

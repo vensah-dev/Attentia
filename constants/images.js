@@ -10,7 +10,11 @@ import placeholderLeaderboards from "../assets/images/placeholder-leaderboards.p
 import mouseRun from "../assets/images/Mouse-Run.png";
 import flow from "../assets/images/Flow.png";
 import squareBreathing from "../assets/images/Square-Breathing.png";
+import duodecohedronBreathing from "../assets/images/Duo-Decohedron-Breathing.png";
 import spotDiff from "../assets/images/spot-the-diff.png";
+import pfpImpStat from "../assets/images/profile-improvement-stat.png";
+
+
 
 
 
@@ -28,5 +32,7 @@ export default {
     mouseRun, 
     flow, 
     squareBreathing, 
-    spotDiff
+    duodecohedronBreathing,
+    spotDiff,
+    pfpImpStat,
 };

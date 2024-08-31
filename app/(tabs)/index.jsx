@@ -5,31 +5,31 @@ import { StatusBar,  } from 'expo-status-bar'
 import {colors} from "../../constants/colors"
 import {images} from "../../constants"
 import {Link, Stack} from "expo-router"
-import {HeaderWithProfile} from "./_layout"
+import {HeaderWithProfile} from '../_layout';
 import "../../global.css"
 
 export default function HomeScreen(){
   return (
     <>
-    <StatusBar style="light"/>
+      <StatusBar style="light"/>
 
-    <ScrollView className="bg-primary h-full">
-      {/* header */}
-      <HeaderWithProfile title={"Home"}/>
+      <ScrollView className="bg-primary h-full">
+        {/* header */}
+        <HeaderWithProfile title={"Home"}/>
 
-      <View className="bg-tertiary">
-        <Text className="text-white100 opacity-75 m-8">item 1</Text>
-      </View>
+        <View className="bg-tertiary">
+          <Text className="text-white100 opacity-75 m-8">item 1</Text>
+        </View>
 
-      <View className="bg-secondary">
-        <Text className="text-white100 opacity-75 m-8">item 2</Text>
-      </View>
+        <View className="bg-secondary">
+          <Text className="text-white100 opacity-75 m-8">item 2</Text>
+        </View>
 
-      <View className="bg-tertiary">
-        <Text className="text-white100 opacity-75 m-8">item 3</Text>
-      </View>
+        <View className="bg-tertiary">
+          <Text className="text-white100 opacity-75 m-8">item 3</Text>
+        </View>
 
-    </ScrollView>
+      </ScrollView>
     </>
   )
 }

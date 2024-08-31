@@ -32,7 +32,7 @@ export default function TabsScreen(){
 
   return (
     <>
-    <StatusBar style="light"/>
+       <StatusBar style="light"/>
 
     <SafeAreaView edges={['right', 'left', 'top']} style={{flex:1, backgroundColor: colors.primary}} >
       <Tabs 
@@ -122,45 +122,3 @@ export default function TabsScreen(){
   )
 }
 
-export function HeaderWithProfile({title}){
-  return(
-    <View className="mt-8 mb-6 mx-6 bg-primary">
-      <View>
-        
-        <Link href="profile" className="self-end">
-          <Avatar
-            size={48}
-            rounded
-            overlayContainerStyle={{backgroundColor: colors.secondary}}
-            source={images.pfp}
-            activeOpacity={0.7}
-          />
-        </Link>
-
-        <Text className="text-white100 font-psemibold text-h1 pb-2">{title}</Text>
-
-      </View> 
-    </View>
-  )
-}
-
-export function HeaderPlain({title}){
-  return(
-    <View className="mx-6 mb-6 bg-primary">
-
-        <Text className="text-white100 font-psemibold text-h1">{title}</Text>
-
-    </View>
-  )
-}
-
-export function BackButton({router}){
-  return(
-    <View className="bg-primary">
-
-        <TouchableOpacity className="self-start px-4 py-2" onPress={() => router.back()}>
-          <Image source={icons.leftArrow} resizeMode='contain' className="w-12 h-12" tintColor={colors.white75}/>
-        </TouchableOpacity>
-    </View>
-  )
-}

@@ -7,7 +7,7 @@ import {images} from "../../constants"
 import {Link, Stack} from "expo-router"
 import "../../global.css"
 import { FlatList } from 'react-native';
-import {HeaderWithProfile} from './_layout';
+import {HeaderWithProfile} from '../_layout';
 
 
 const users = [
@@ -116,6 +116,8 @@ export default function LeaderboardsScreen(){
 
   return (
     <>
+      <StatusBar style="light"/>
+
       <FlatList
         data={users.sort((a, b) => (a.score > b.score ? -1 : 1))}
         renderItem={({item}) => (<LeaderboardItem user={item} index={users.findIndex((temp) => temp["score"] === item.score)}/>)}

@@ -5,7 +5,7 @@ import { StatusBar,  } from 'expo-status-bar'
 import {colors} from "../../constants/colors"
 import {images} from "../../constants"
 import {Link, Stack} from "expo-router"
-import { HeaderWithProfile } from './_layout';
+import {HeaderWithProfile} from '../_layout';
 import "../../global.css"
 
 export default function GoalsScreen(){

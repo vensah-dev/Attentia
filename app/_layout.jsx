@@ -1,9 +1,15 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import {React, useEffect} from 'react'
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from "expo-font";
-import { Stack } from 'expo-router';
+import { Stack, Link } from 'expo-router';
+import { Avatar } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { StatusBar } from 'expo-status-bar'
+import {colors} from "../constants/colors"
+import {images} from "../constants";
+import {icons} from "../constants"
+
 
 SplashScreen.preventAutoHideAsync();
 
@@ -35,10 +41,60 @@ export default function App(){
   if(!fontsLoaded && !error) return null;
   
   return ( 
+    <>
+      <StatusBar style="light"/>
+
       <Stack screenOptions={{headerShown: false}}>
         <Stack.Screen name="(tabs)" />
       </Stack>
 
+    </>
 
+
+
+  )
+}
+
+export function HeaderWithProfile({title}){
+  return(
+    <View className="mt-8 mb-6 mx-6 bg-primary">
+      <View>
+        
+        <Link href="profile" className="self-end">
+          <Avatar
+            size={40}
+            rounded
+            backgroundColor={colors.white100}
+            overlayContainerStyle={{backgroundColor: colors.white100}}
+            source={images.profile}
+            activeOpacity={0.7}
+          />
+        </Link>
+
+        <Text className="text-white100 font-psemibold text-h1 pb-2">{title}</Text>
+
+      </View> 
+    </View>
+  )
+}
+
+export function HeaderPlain({title}){
+  return(
+    <View className="mx-6 mb-6 bg-primary">
+
+        <Text className="text-white100 font-psemibold text-h1">{title}</Text>
+
+    </View>
+  )
+}
+
+export function BackButton({router}){
+  return(
+    <View className="pt-3 bg-primary">
+
+        <TouchableOpacity className="self-start px-4 py-2" onPress={() => router.back()}>
+          <Image source={icons.leftArrow} resizeMode='contain' className="w-10 h-10" tintColor={colors.white75}/>
+        </TouchableOpacity>
+    </View>
   )
 }

@@ -9,15 +9,15 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 import "../../global.css"
 
-export default function SquareBreathingScreen(){
+export function ExerciseInfoScreen(name, pagePath){
   const router = useRouter();
   return (
     <View className="bg-primary">
       <SafeAreaView edges={['right', 'left', 'top']} className="flex-1 bg-primary h-full w-full">
-        <ScrollView className="bg-primary h-full" stickyHeaderIndices={[0]}>
+        <View className="bg-primary h-full" stickyHeaderIndices={[0]}>
 
           <BackButton router={router}/>
-          <HeaderPlain title={"Square Breathe"}/>
+          <HeaderPlain title={name}/>
 
           <View className="bg-tertiary">
             <Text className="text-white100 opacity-75 m-8">item 1</Text>
@@ -31,8 +31,9 @@ export default function SquareBreathingScreen(){
             <Text className="text-white100 opacity-75 m-8">item 3</Text>
           </View>
 
-        </ScrollView>
+        </View>
       </SafeAreaView>
+
     </View>
   )
 }

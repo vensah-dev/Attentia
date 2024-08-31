@@ -14,10 +14,10 @@ export default function SquareBreathingScreen(){
   return (
     <View className="bg-primary">
       <SafeAreaView edges={['right', 'left', 'top']} className="flex-1 bg-primary h-full w-full">
-        <ScrollView className="bg-primary h-full" stickyHeaderIndices={[0]}>
 
+        <ScrollView className="bg-primary h-full" stickyHeaderIndices={[0]}>
           <BackButton router={router}/>
-          <HeaderPlain title={"Square Breathe"}/>
+          <HeaderPlain title={"Mouse Run"}/>
 
           <View className="bg-tertiary">
             <Text className="text-white100 opacity-75 m-8">item 1</Text>
@@ -33,6 +33,7 @@ export default function SquareBreathingScreen(){
 
         </ScrollView>
       </SafeAreaView>
+
     </View>
   )
 }
