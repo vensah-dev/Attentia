@@ -5,7 +5,6 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "scheme": "Attentia",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
@@ -40,6 +39,12 @@
         "projectId": "58581d38-11b9-455d-91eb-a27fbd8ad253"
       }
     },
-    "owner": "vensah"
+    "owner": "vensah",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/58581d38-11b9-455d-91eb-a27fbd8ad253"
+    }
   }
 }
