@@ -4,19 +4,24 @@ import React, { useState } from 'react'
 import { StatusBar,  } from 'expo-status-bar'
 import {colors} from "../../constants/colors"
 import {images} from "../../constants"
+
+import { commonPackImages } from '../../constants/images';
+import { uncommonPackImages } from '../../constants/images';
+import { rarePackImages } from '../../constants/images';
+import { epicPackImages } from '../../constants/images';
+import { legendaryPackImages } from '../../constants/images';
+
 import {icons} from "../../constants"
 import {Link, Stack, useRouter} from "expo-router"
 import {HeaderWithProfile} from '../_layout';
 import "../../global.css"
 
-
-
 const cardPacks = [
   {
     name: "Common Pack",
     chances: {
-      common: 0.8,
-      uncommon: 0.1,
+      common: 0.6,
+      uncommon: 0.3,
       rare: 0.08,
       epic: 0.019,
       legendary: 0.001,
@@ -27,10 +32,10 @@ const cardPacks = [
   {
     name: "Rare Pack",
     chances: {
-      common: 0.5,
-      uncommon: 0.2,
+      common: 0,
+      uncommon: 0.65,
       rare: 0.25,
-      epic: 0.04,
+      epic: 0.09,
       legendary: 0.01,
     },
     image: images.rarePack,
@@ -39,19 +44,78 @@ const cardPacks = [
   {
     name: "Legendary Pack",
     chances: {
-      common: 0.05,
-      uncommon: 0.1,
-      rare: 0.6,
-      epic: 0.15,
-      legendary: 0.1,
+      common: 0,
+      uncommon: 0,
+      rare: 0.65,
+      epic: 0.3,
+      legendary: 0.05,
     },
     image: images.legendaryPack,
     cost: 500,
   },
 ];
 
+
+
 export function CardPackItem({cardPack}){
   const [purchaseOpen, setPurchaseOpen] = useState(false);
+  const [packOpen, setpackOpen] = useState(false);
+  const [packImage, setpackImage] = useState(legendaryPackImages.xyz);
+
+
+  const randomItemIndex = (chances) => {
+    const generatedChance = Math.random();
+    var generatedTier = "";
+    var listOfChances = [];
+  
+    for (let x in chances) {
+      if (chances[x] > 0) {
+        listOfChances.push(parseFloat(chances[x]));
+      }
+    }
+  
+    // Sort the chances in ascending order
+    listOfChances = listOfChances.sort((a, b) => a - b);
+  
+    // Calculate cumulative probabilities
+    var cumulativeProbability = 0;
+    for (let i = 0; i < listOfChances.length; i++) {
+      cumulativeProbability += listOfChances[i];
+      listOfChances[i] = cumulativeProbability;
+    }
+
+    console.log(listOfChances)
+    console.log(generatedChance)
+
+    // Find the tier based on the generated chance
+    for (let j = 0; j < listOfChances.length; j++) {
+      if (generatedChance < listOfChances[j]) {
+        if(j == 0){
+          var keys = Object.keys(legendaryPackImages);
+          setpackImage(legendaryPackImages[keys[keys.length * Math.random() << 0]]);
+        }
+        else if(j == 1){
+          var keys = Object.keys(epicPackImages);
+          setpackImage(epicPackImages[keys[keys.length * Math.random() << 0]]);
+        }
+        else if(j == 2){
+          var keys = Object.keys(rarePackImages);
+          setpackImage(rarePackImages[keys[keys.length * Math.random() << 0]]);
+        }
+        else if(j == 3){
+          var keys = Object.keys(uncommonPackImages);
+          setpackImage(uncommonPackImages[keys[keys.length * Math.random() << 0]]);
+        }
+        else if(j == 4){
+          var keys = Object.keys(commonPackImages);
+          setpackImage(commonPackImages[keys[keys.length * Math.random() << 0]]);
+        }
+
+        break;
+      }
+    }  
+  };
+
   return (
 
     <View className="bg-secondary h-auto rounded-[8px] mt-6 mx-6 flex-col">
@@ -95,34 +159,42 @@ export function CardPackItem({cardPack}){
 
       </View>
 
-      <Modal visible={purchaseOpen} animationType='fade' transparent>
-        <View className="backdrop-blur-md flex-1 items-center justify-center bg-primary bg-opacity-90">
+      <TouchableOpacity onPress={() => setPurchaseOpen(true)} className="m-[16px] bg-tertiary flex-row items-center justify-center rounded-[4px]" activeOpacity={0.7}>
+        <Image source={icons.credits} className="h-4 w-4 mr-3"/>
+        <Text className="text-h6 text-white75 font-pmedium my-2">{cardPack.cost}</Text>
+      </TouchableOpacity> 
 
-          <TouchableOpacity onPress={() => setPurchaseOpen(false)}>
+      {/* confirmation modal */}
+      <Modal visible={purchaseOpen} animationType='fade' transparent>
+        <TouchableOpacity activeOpacity={1} className="backdrop-blur-md flex-1 items-center justify-center bg-primary bg-opacity-90" onPress={() => setPurchaseOpen(false)}>
+
+          <TouchableOpacity onPress={() => {setpackOpen(true); randomItemIndex(cardPack.chances); setPurchaseOpen(false);}} activeOpacity={0.8}>
             <Image source={cardPack.image} className="h-[384px] w-[270px] self-center"/>
           </TouchableOpacity>
 
-          <View className="flex-row ">
-            <TouchableOpacity onPress={() => setPurchaseOpen(false)} className="rounded-[8px] items-center justify-center mt-16">
-              <Text className="text-h6 text-white75 font-pmedium px-4 py-2">Exit</Text>
-            </TouchableOpacity>
+          <TouchableOpacity onPress={() => setPurchaseOpen(false)} className="my-12" activeOpacity={0.7}>
+              <Text className="text-white50 font-pmedium">Exit</Text>
+          </TouchableOpacity> 
 
-          </View>
-
-
-
-        </View>
+        </TouchableOpacity>
       </Modal>
 
-      <TouchableOpacity onPress={() => setPurchaseOpen(true)} className=' h-[40px] m-[16px] bg-tertiary flex-row items-center justify-center rounded-[8px]'>
+      {/* opened up modal */}
+      <Modal visible={packOpen} animationType='fade' transparent>
+        <TouchableOpacity activeOpacity={1} className="backdrop-blur-md flex-1 items-center justify-center bg-primary bg-opacity-90" onPress={() => setpackOpen(false)}>
 
-        <Image source={icons.credits} className="h-4 w-4 mr-2"/>
-        <Text className="text-h6 text-white75 font-pmedium">{cardPack.cost}</Text>
+          <TouchableOpacity onPress={() => {setpackOpen(false)}} activeOpacity={0.8}>
+            <Image source={packImage} className="h-[200px] w-[200px] self-center rounded-full border-2 border-white10"/>
+          </TouchableOpacity>
 
-      </TouchableOpacity> 
+          <TouchableOpacity onPress={() => setpackOpen(false)} className="my-12" activeOpacity={0.7}>
+              <Text className="text-white50 font-pmedium">continue</Text>
+          </TouchableOpacity> 
+
+        </TouchableOpacity>
+      </Modal>
 
     </View>
-
   )
 }
 

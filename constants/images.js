@@ -23,8 +23,14 @@ import house from "../assets/images/common/house-common.png";
 //uncommon
 import mountains from "../assets/images/uncommon/mountains-uncommon.png";
 
+//rare
+import Frame96Rare from "../assets/images/rare/Frame 96.png";
 
+//epic
+import Frame96Epic from "../assets/images/epic/Frame 96.png";
 
+//legendary
+import xyz from "../assets/images/legendary/xyz-legendary.png";
 
 //exercises
 import mouseRun from "../assets/images/exercises/Mouse-Run.png";
@@ -32,11 +38,6 @@ import flow from "../assets/images/exercises/Flow.png";
 import squareBreathing from "../assets/images/exercises/Square-Breathing.png";
 import duodecohedronBreathing from "../assets/images/exercises/Duo-Decohedron-Breathing.png";
 import spotDiff from "../assets/images/exercises/spot-the-diff.png";
-
-
-
-
-
 
 
 export default { 
@@ -76,4 +77,29 @@ export default {
 
     //legendary
 
+};
+
+export const commonPackImages = {
+    grizzlyBear,
+    snowman,
+    circles,
+    tree,
+    cryingSun,
+    duck,
+    mushroom,
+    saturn,
+    house,
+};
+export const uncommonPackImages = {
+    mountains,
+
+};
+export const rarePackImages = {
+    Frame96Rare,
+};
+export const epicPackImages = {
+    Frame96Epic,
+};
+export const legendaryPackImages = {
+    xyz,
 };

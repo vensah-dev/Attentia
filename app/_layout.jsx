@@ -89,7 +89,7 @@ export function HeaderPlain({title}){
 export function BackButton({router}){
   return(
     <View className="pt-3 bg-primary">
-        <TouchableOpacity activeOpacity={0.65} className="self-start px-4 py-2" onPress={() => router.back()}>
+        <TouchableOpacity activeOpacity={0.7} className="self-start px-4 py-2" onPress={() => router.back()}>
           <Image source={icons.leftArrow} resizeMode='contain' className="w-10 h-10" tintColor={colors.white75}/>
         </TouchableOpacity>
     </View>

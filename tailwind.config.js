@@ -41,7 +41,7 @@ module.exports = {
         },
         fontSize: {
           "kitmin": '0.694rem',
-          sm: '0.833rem',
+          "sm": '0.833rem',
           base: '1rem',
           "h1": '2.986rem',
           'h2': '2.488rem',
