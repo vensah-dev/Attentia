@@ -4,6 +4,7 @@
  */
 
 export const colors = {
+  //theme colours
   primary: "#131118",
   secondary: "#2B2735",
   tertiary: "#484158",
@@ -16,5 +17,15 @@ export const colors = {
   white25: 'rgba(230, 230, 230, 0.25)',
   white10: 'rgba(230, 230, 230, 0.1)',
   white5: 'rgba(230, 230, 230, 0.05)',
+
+  //actual colors
+  red: '#EE4242',
+  orange: '#E69448',
+  yellow: '#E4BB2A',
+  green: '#70B072',
+  cyan: '#58A7C9',
+  blue: '#5184CA',
+  purple: '#9367DA',
+
 };
 

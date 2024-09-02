@@ -22,7 +22,7 @@ export default function ProfileScreen(){
           <HeaderPlain title={"Profile"}/>
 
 
-          <View className="flex-1 justify-center items-center w-full px-6 rounded-[8px] pt-12">
+          <View className="flex-1 justify-start items-start w-full px-6 rounded-[8px] pt-8">
 
             <Image
               source={images.pfpImpStat} // Replace with your image URL
@@ -31,9 +31,9 @@ export default function ProfileScreen(){
               className="flex-1 w-full h-full rounded-[8px] border-white5 border-2"
             />
 
-            <View className="flex-1 items-center absolute self-start ml-12 bottom-[4%]">
+            <View className="flex-1 items-center absolute self-start ml-12 bottom-[10%]">
               <Avatar
-                size={176}
+                size={160}
                 rounded
                 backgroundColor={colors.white100}
                 overlayContainerStyle={{backgroundColor: colors.white100}}
@@ -41,10 +41,10 @@ export default function ProfileScreen(){
                 activeOpacity={0.7}
               />
 
-              <Text className="text-white75 font-pmedium text-h6 pt-[2%]">UserName</Text>
+              <Text className="text-white75 font-pmedium text-h6 pt-[8px]">UserName</Text>
             </View>
 
-            <View className="flex-1 items-center absolute self-end right-[14%]">
+            <View className="flex-1 items-center absolute self-end right-[14%] top-[50%]">
               <Text className="text-white100 font-pextrabold text-h1">30%</Text>
               <Text className="text-white100 font-pregular text-kitmin">Improvement in focus</Text>
             </View>

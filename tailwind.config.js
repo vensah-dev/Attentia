@@ -7,6 +7,7 @@ module.exports = {
       extend: {
         colors: {
           primary: colors.primary,
+          primaryLight: colors.primaryLight,
           secondary: colors.secondary,
           tertiary: colors.tertiary,
           accentPrimary: colors.accentPrimary,
@@ -18,7 +19,14 @@ module.exports = {
           white25: colors.white25,
           white10: colors.white10,
           white5: colors.white5,
-          whiteClearGrad: 'linear-gradient(90deg, rgba(230, 230, 230, 0.00) 37.69%, #E6E6E6 100%)',
+
+          red: colors.red,
+          orange: colors.orange,
+          yellow: colors.yellow,
+          green: colors.green,
+          cyan: colors.cyan,
+          blue: colors.blue,
+          purple: colors.purple,
         },
         fontFamily: {
           pthin: ["Poppins-Thin", "sans-serif"],
@@ -47,4 +55,3 @@ module.exports = {
     },
     plugins: [],
   };
-  

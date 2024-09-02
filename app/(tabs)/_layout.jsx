@@ -101,14 +101,14 @@ export default function TabsScreen(){
           />
           
           <Tabs.Screen
-            name = "goals"
+            name = "market"
             options={{
-              title: "Goals",
+              title: "Market",
               headerShown: false,
               tabBarIcon: ({color, focused}) => (
                 <TabIcon
-                  icon={icons.bullseye}
-                  name="Goals"
+                  icon={icons.cart}
+                  name="Market"
                   color={color}
                   focused={focused}
                 />

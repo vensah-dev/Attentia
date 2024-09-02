@@ -2,8 +2,12 @@ import home from "../assets/icons/home.png";
 import lightBulb from "../assets/icons/light-bulb.png";
 import trophy from "../assets/icons/trophy.png";
 import stats from "../assets/icons/stats.png";
-import bullseye from "../assets/icons/bullseye.png";
+import cart from "../assets/icons/cart.png";
 import leftArrow from "../assets/icons/arrow-left-short.png";
+import XP from "../assets/icons/XP.png";
+import credits from "../assets/icons/Credits.png";
+
+
 
 
 // import leftArrow from "../assets/icons/left-arrow.png";
@@ -21,6 +25,8 @@ export default {
   lightBulb,
   trophy,
   stats,
-  bullseye,
+  cart,
   leftArrow,
+  XP,
+  credits,
 };
