@@ -8,7 +8,7 @@ import {Link, Stack} from "expo-router"
 import {HeaderWithProfile} from '../_layout';
 import "../../global.css"
 
-export default function HomeScreen(){
+export default function HomeScreen({navigation}){
   return (
     <>
       <StatusBar style="light"/>

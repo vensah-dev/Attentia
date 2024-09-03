@@ -11,7 +11,7 @@ import { Avatar } from 'react-native-elements/dist/avatar/Avatar'
 
 
 
-export default function ProfileScreen(){
+export default function ProfileScreen({navigation}){
   const router = useRouter();
   return (
     <View className="bg-primary">

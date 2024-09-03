@@ -19,18 +19,21 @@ const exercises = [
         image: images.squareBreathing,
         title: "Square Breathing",
         pagePath: "../(exercises)/squareBreathing",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
     
       },
       {
         image: images.spotDiff,
         title: "Spot The Difference",
         pagePath: "../(exercises)/spotDiff",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
 
       },
       {
         image: images.mouseRun,
         title: "Mouse Run",
         pagePath: "../(exercises)/mouseRun",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
 
       },
     ]
@@ -42,16 +45,22 @@ const exercises = [
         image: images.squareBreathing,
         title: "Square Breathing",
         pagePath: "../(exercises)/squareBreathing",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
+
       },
       {
         image: images.spotDiff,
         title: "Spot The Difference",
         pagePath: "../(exercises)/spotDiff",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
+
       },
       {
         image: images.squareBreathing,
         title: "hyper Duo-Decohedron Breathing?",
         pagePath: "../(exercises)/squareBreathing",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
+
       },
     ]
   },
@@ -62,11 +71,15 @@ const exercises = [
         image: images.mouseRun,
         title: "Mouse Run",
         pagePath: "../(exercises)/mouseRun",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
+
       },
       {
         image: images.flow,
         title: "Flow",
         pagePath: "../(exercises)/flow",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
+
       },
     ]
   },
@@ -77,26 +90,29 @@ const exercises = [
         image: images.mouseRun,
         title: "Deep Reading",
         pagePath: "../(exercises)/deepReading",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
+
       },
       {
         image: images.flow,
         title: "Tracing",
         pagePath: "../(exercises)/deepReading",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
+
       },
     ]
   },
 
 ];
 
-const Exercise = ({exercise, category}) => (
-  <Link  href={{ pathname: "../(exercises)/_layout", params: { name: exercise.title, pagePath: exercise.pagePath} }}>
+const Exercise = ({exercise}) => (
+  <Link  href={{ pathname: `../(exercises)/detailView`, params: {title: exercise.title, category: findCategory(exercise.title), description: exercise.description, image: exercise.image, pagePath: exercise.pagePath} }}>
     <View className="gap-2 pr-6 pt-6">
 
       <Image source={exercise.image} className="w-[144px] h-[99px] rounded-[8px] border-white10 border" resizeMode='contain'/>
 
       <View>
-        <Text className="text-white75 text-base font-plight w-[144px]">{exercise.title.toString()}</Text>
-        <Text className="text-white50 text-base font-plight w-[144px]">{category.toString()}</Text>
+        <Text className="text-white75 text-base font-plight w-[144px] pb-4">{exercise.title.toString()}</Text>
       </View>
 
     </View>
@@ -104,6 +120,18 @@ const Exercise = ({exercise, category}) => (
 
 
 );
+
+function findCategory(title){
+  for(let x in exercises){
+    if(exercises[x].category != "Today's Exercises"){
+      for(let e of exercises[x].values){
+        if(e.title == title){
+          return exercises[x].category
+        }
+      }
+    }
+  }
+}
 
 export default function ExerciseScreen(){
 
@@ -121,7 +149,7 @@ export default function ExerciseScreen(){
 
                 <FlatList
                   data={cat.values}
-                  renderItem={({item}) => <Exercise exercise={item} category={""} />}
+                  renderItem={({item}) => <Exercise exercise={item}/>}
                   keyExtractor={item => cat.values.findIndex((temp) => temp["title"] === item.title)}
                   horizontal={true}
                   showsHorizontalScrollIndicator={false}

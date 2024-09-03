@@ -210,7 +210,7 @@ export default function MarketScreen(){
       {/* header */}
       <HeaderWithProfile title={"Market"}/>
 
-      <View className="bg-secondary h-[96px] w-full flex-row justify-between items-center px-6">
+      <View className="bg-white5 h-[96px] w-full flex-row justify-between items-center px-6">
 
         <View className="flex-row justify-between items-center">
           <Avatar

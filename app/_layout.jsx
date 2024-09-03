@@ -45,13 +45,10 @@ export default function App(){
       <StatusBar style="light"/>
 
       <Stack screenOptions={{headerShown: false}}>
-        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="(tabs)"/>
       </Stack>
 
     </>
-
-
-
   )
 }
 
