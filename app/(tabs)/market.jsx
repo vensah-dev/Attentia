@@ -159,7 +159,7 @@ export function CardPackItem({cardPack}){
 
       </View>
 
-      <TouchableOpacity onPress={() => setPurchaseOpen(true)} className="m-[16px] bg-tertiary flex-row items-center justify-center rounded-[4px]" activeOpacity={0.7}>
+      <TouchableOpacity onPress={() => setPurchaseOpen(true)} className="m-[16px] bg-tertiary flex-row items-center justify-center rounded-[8px]" activeOpacity={0.7}>
         <Image source={icons.credits} className="h-4 w-4 mr-3"/>
         <Text className="text-h6 text-white75 font-pmedium my-2">{cardPack.cost}</Text>
       </TouchableOpacity> 

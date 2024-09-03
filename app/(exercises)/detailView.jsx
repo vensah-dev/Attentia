@@ -28,6 +28,7 @@ export default function ExerciseInfoScreen(){
                   style={{aspectRatio: 1.45 / 1}}
                   resizeMode='contain'
                   className=" flex-1 w-full h-full"
+                  
                 />
 
                 <Text className="text-white100 font-pmedium text-h3 mx-6 mt-6 mb-1">{exercise.title}</Text>
