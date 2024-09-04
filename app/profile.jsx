@@ -8,11 +8,11 @@ import {BackButton, HeaderPlain} from './_layout';
 import "../global.css";
 import { images } from '@/constants'
 import { Avatar } from 'react-native-elements/dist/avatar/Avatar'
-
-
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function ProfileScreen({navigation}){
   const router = useRouter();
+  const user = useSelector(state => state.user);
   return (
     <View className="bg-primary">
       <SafeAreaView edges={['right', 'left', 'top']} className="flex-1 bg-primary h-full w-full">
@@ -41,7 +41,7 @@ export default function ProfileScreen({navigation}){
                 activeOpacity={0.7}
               />
 
-              <Text className="text-white75 font-pmedium text-h6 pt-[8px]">UserName</Text>
+              <Text className="text-white75 font-pmedium text-h6 pt-[8px]">{user.userName}</Text>
             </View>
 
             <View className="flex-1 items-center absolute self-end right-[14%] top-[50%]">

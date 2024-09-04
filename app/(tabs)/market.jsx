@@ -16,6 +16,9 @@ import {Link, Stack, useRouter} from "expo-router"
 import {HeaderWithProfile} from '../_layout';
 import "../../global.css"
 
+import { useDispatch, useSelector } from 'react-redux';
+import { setCredits } from '../../store/actions';
+
 const cardPacks = [
   {
     name: "Common Pack",
@@ -55,9 +58,7 @@ const cardPacks = [
   },
 ];
 
-
-
-export function CardPackItem({cardPack}){
+export function CardPackItem({cardPack, user}){
   const [purchaseOpen, setPurchaseOpen] = useState(false);
   const [packOpen, setpackOpen] = useState(false);
   const [packImage, setpackImage] = useState(legendaryPackImages.xyz);
@@ -83,9 +84,6 @@ export function CardPackItem({cardPack}){
       cumulativeProbability += listOfChances[i];
       listOfChances[i] = cumulativeProbability;
     }
-
-    console.log(listOfChances)
-    console.log(generatedChance)
 
     // Find the tier based on the generated chance
     for (let j = 0; j < listOfChances.length; j++) {
@@ -115,6 +113,8 @@ export function CardPackItem({cardPack}){
       }
     }  
   };
+
+  const dispatch = useDispatch();
 
   return (
 
@@ -159,7 +159,15 @@ export function CardPackItem({cardPack}){
 
       </View>
 
-      <TouchableOpacity onPress={() => setPurchaseOpen(true)} className="m-[16px] bg-tertiary flex-row items-center justify-center rounded-[8px]" activeOpacity={0.7}>
+      <TouchableOpacity onPress={() => {
+        if(user.credits >= cardPack.cost){
+          setPurchaseOpen(true);
+        }
+      }}
+      className={` m-[16px] bg-tertiary flex-row items-center justify-center rounded-[8px] 
+      ${user.credits >= cardPack.cost ? 'opacity-100 active:opacity-70' : 'opacity-25'}`} 
+    
+      >
         <Image source={icons.credits} className="h-4 w-4 mr-3"/>
         <Text className="text-h6 text-white75 font-pmedium my-2">{cardPack.cost}</Text>
       </TouchableOpacity> 
@@ -168,7 +176,7 @@ export function CardPackItem({cardPack}){
       <Modal visible={purchaseOpen} animationType='fade' transparent>
         <TouchableOpacity activeOpacity={1} className="backdrop-blur-md flex-1 items-center justify-center bg-primary bg-opacity-90" onPress={() => setPurchaseOpen(false)}>
 
-          <TouchableOpacity onPress={() => {setpackOpen(true); randomItemIndex(cardPack.chances); setPurchaseOpen(false);}} activeOpacity={0.8}>
+          <TouchableOpacity onPress={() => {setpackOpen(true); dispatch(setCredits(value = user.credits - cardPack.cost)); randomItemIndex(cardPack.chances); setPurchaseOpen(false);}} activeOpacity={0.8}>
             <Image source={cardPack.image} className="h-[384px] w-[270px] self-center"/>
           </TouchableOpacity>
 
@@ -183,7 +191,7 @@ export function CardPackItem({cardPack}){
       <Modal visible={packOpen} animationType='fade' transparent>
         <TouchableOpacity activeOpacity={1} className="backdrop-blur-md flex-1 items-center justify-center bg-primary bg-opacity-90" onPress={() => setpackOpen(false)}>
 
-          <TouchableOpacity onPress={() => {setpackOpen(false)}} activeOpacity={0.8}>
+          <TouchableOpacity onPress={() => { setpackOpen(false)}} activeOpacity={0.8}>
             <Image source={packImage} className="h-[200px] w-[200px] self-center rounded-full border-2 border-white10"/>
           </TouchableOpacity>
 
@@ -198,9 +206,8 @@ export function CardPackItem({cardPack}){
   )
 }
 
-
 export default function MarketScreen(){
-  const router = useRouter();
+  const user = useSelector(state => state.user);
 
   return (
     <>
@@ -221,19 +228,19 @@ export default function MarketScreen(){
             source={images.profile}
           />
 
-          <Text className="text-white75 font-pmedium text-h5 pl-6">UserName</Text>
+          <Text className="text-white75 font-pmedium text-h5 pl-6">{user.userName}</Text>
         </View>
 
         <View className="flex-col h-[64px] justify-between">
           
           <View className="flex-row gap-2">
             <Image source={icons.credits} className="w-[24px] h-[24px]" resizeMode='contain'/>
-            <Text className="text-h6 text-white75 font-plight">999999</Text>
+            <Text className="text-h6 text-white75 font-plight">{user.credits}</Text>
           </View>
 
           <View className="flex-row gap-2">
             <Image source={icons.XP} className="w-[24px] h-[24px]" resizeMode='contain'/>
-            <Text className="text-h6 text-white75 font-plight">999999</Text>
+            <Text className="text-h6 text-white75 font-plight">{user.xp}</Text>
           </View>        
         
         </View>
@@ -242,7 +249,7 @@ export default function MarketScreen(){
 
       <FlatList
         data={cardPacks}
-        renderItem={({item}) => (<CardPackItem cardPack={item}/>)}
+        renderItem={({item}) => (<CardPackItem cardPack={item} user={user}/>)}
         keyExtractor={item => cardPacks.findIndex((temp) => temp["name"] === item.name)}
         className="bg-primary"
 

@@ -9,6 +9,9 @@ import { StatusBar } from 'expo-status-bar'
 import {colors} from "../constants/colors"
 import {images} from "../constants";
 import {icons} from "../constants"
+import {Provider} from "react-redux"
+
+import store from "../store"
 
 
 SplashScreen.preventAutoHideAsync();
@@ -41,6 +44,7 @@ export default function App(){
   if(!fontsLoaded && !error) return null;
   
   return ( 
+    <Provider store={store}>
     <>
       <StatusBar style="light"/>
 
@@ -49,6 +53,8 @@ export default function App(){
       </Stack>
 
     </>
+    </Provider>
+
   )
 }
 
