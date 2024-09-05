@@ -1,6 +1,6 @@
 const initialState = {
     userName: "Legally",
-    credits: 250,
+    credits: 9999,
     xp: 100,
 };
 

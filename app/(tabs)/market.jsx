@@ -1,6 +1,6 @@
-import { Text, View, ScrollView, Image, FlatList, TouchableOpacity, Modal } from 'react-native'
+import { Text, View, ScrollView, Image, FlatList, TouchableOpacity, Animated, Modal } from 'react-native'
 import { Avatar } from 'react-native-elements';
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { StatusBar,  } from 'expo-status-bar'
 import {colors} from "../../constants/colors"
 import {images} from "../../constants"
@@ -58,11 +58,12 @@ const cardPacks = [
   },
 ];
 
+
+
 export function CardPackItem({cardPack, user}){
   const [purchaseOpen, setPurchaseOpen] = useState(false);
   const [packOpen, setpackOpen] = useState(false);
   const [packImage, setpackImage] = useState(legendaryPackImages.xyz);
-
 
   const randomItemIndex = (chances) => {
     const generatedChance = Math.random();
@@ -116,6 +117,17 @@ export function CardPackItem({cardPack, user}){
 
   const dispatch = useDispatch();
 
+  const imageScale = useRef(new Animated.Value(1)).current;
+  const imageOpacity = useRef(new Animated.Value(1)).current;
+  const [exitTextOpacity, setExitTextOpacity] = useState(1);
+
+  const imageStyle = {
+    transform: [{ scale: imageScale}],
+    opacity: imageOpacity,
+  };
+
+
+
   return (
 
     <View className="bg-secondary h-auto rounded-[8px] mt-6 mx-6 flex-col">
@@ -161,6 +173,9 @@ export function CardPackItem({cardPack, user}){
 
       <TouchableOpacity onPress={() => {
         if(user.credits >= cardPack.cost){
+          Animated.timing(imageScale, {toValue: 1, duration: 1, useNativeDriver: true,}).start();
+          Animated.timing(imageOpacity, {toValue: 1, duration: 1, useNativeDriver: true,}).start();
+          setExitTextOpacity(1);
           setPurchaseOpen(true);
         }
       }}
@@ -176,19 +191,33 @@ export function CardPackItem({cardPack, user}){
       <Modal visible={purchaseOpen} animationType='fade' transparent>
         <TouchableOpacity activeOpacity={1} className="backdrop-blur-md flex-1 items-center justify-center bg-primary bg-opacity-90" onPress={() => setPurchaseOpen(false)}>
 
-          <TouchableOpacity onPress={() => {setpackOpen(true); dispatch(setCredits(value = user.credits - cardPack.cost)); randomItemIndex(cardPack.chances); setPurchaseOpen(false);}} activeOpacity={0.8}>
-            <Image source={cardPack.image} className="h-[384px] w-[270px] self-center"/>
+          <TouchableOpacity 
+          onPress={() => { 
+            setExitTextOpacity(0);
+            Animated.timing(imageScale, {toValue: 3, duration: 1000, useNativeDriver: true,}).start();
+            Animated.timing(imageOpacity, {toValue: 0, duration: 1000, useNativeDriver: true,}).start(() => {
+              setPurchaseOpen(false); 
+              setpackOpen(true); 
+              dispatch(setCredits(value = user.credits - cardPack.cost)); 
+              randomItemIndex(cardPack.chances);
+            });
+          }}
+
+          activeOpacity={1}
+
+          >
+            <Animated.Image source={cardPack.image} style={imageStyle} className="h-[384px] w-[270px] self-center "/>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => setPurchaseOpen(false)} className="my-12" activeOpacity={0.7}>
-              <Text className="text-white50 font-pmedium">Exit</Text>
+          <TouchableOpacity onPress={() => setPurchaseOpen(false)} className="my-12" activeOpacity={1}>
+              <Text style={{opacity: exitTextOpacity}} className="text-white50 font-pmedium">Exit</Text>
           </TouchableOpacity> 
 
         </TouchableOpacity>
       </Modal>
 
       {/* opened up modal */}
-      <Modal visible={packOpen} animationType='fade' transparent>
+      <Modal visible={packOpen} animationType="none" transparent>
         <TouchableOpacity activeOpacity={1} className="backdrop-blur-md flex-1 items-center justify-center bg-primary bg-opacity-90" onPress={() => setpackOpen(false)}>
 
           <TouchableOpacity onPress={() => { setpackOpen(false)}} activeOpacity={0.8}>

@@ -103,7 +103,7 @@ const LeaderboardItem = ({user, index}) => (
         <Text className="text-white75 font-plight text-h5">{user.name}</Text>
       </View>
 
-      <View className={`bg-white15 rounded-[567px] h-[24] w-[64px] flex-row justify-center items-center`}>
+      <View className={`bg-white10 rounded-[567px] h-[24] w-[64px] flex-row justify-center items-center`}>
         <Text className="text-white100 opacity-75 font-plight text-h6">{user.score}</Text>
       </View>
 

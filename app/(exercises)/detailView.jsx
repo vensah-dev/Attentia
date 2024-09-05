@@ -43,7 +43,7 @@ export default function ExerciseInfoScreen(){
 
 
             <TouchableOpacity onPress={() => router.navigate(exercise.pagePath)} className="active:opacity-70 bg-accentPrimary rounded-[8px] mx-6 mb-12 items-center justify-center">
-              <Text className="py-3 text-white75 text-h6 font-pmedium">Start</Text>
+              <Text className="py-3 text-white100 text-h6 font-pmedium">Start</Text>
             </TouchableOpacity>
 
           </View>
