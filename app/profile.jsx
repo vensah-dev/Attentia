@@ -51,6 +51,8 @@ export default function ProfileScreen({navigation}){
 
           </View>
 
+          <Text className="text-white100 opacity-75 m-8">Work in Progress</Text>
+
         </ScrollView>
       </SafeAreaView>
     </View>

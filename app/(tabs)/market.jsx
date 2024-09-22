@@ -61,6 +61,7 @@ const cardPacks = [
 
 
 export function CardPackItem({cardPack, user}){
+  const [backgroundOpen, setBackgroundOpen] = useState(false);
   const [purchaseOpen, setPurchaseOpen] = useState(false);
   const [packOpen, setpackOpen] = useState(false);
   const [packImage, setpackImage] = useState(legendaryPackImages.xyz);
@@ -187,15 +188,17 @@ export function CardPackItem({cardPack, user}){
         <Text className="text-h6 text-white75 font-pmedium my-2">{cardPack.cost}</Text>
       </TouchableOpacity> 
 
+
       {/* confirmation modal */}
-      <Modal visible={purchaseOpen} animationType='fade' transparent>
-        <TouchableOpacity activeOpacity={1} className="backdrop-blur-md flex-1 items-center justify-center bg-primary bg-opacity-90" onPress={() => setPurchaseOpen(false)}>
+      <Modal visible={purchaseOpen} animationType='none'>
+        <TouchableOpacity activeOpacity={1} className=" flex-1 items-center justify-center bg-primary" onPress={() => setPurchaseOpen(false)}>
 
           <TouchableOpacity 
           onPress={() => { 
             setExitTextOpacity(0);
-            Animated.timing(imageScale, {toValue: 3, duration: 1000, useNativeDriver: true,}).start();
-            Animated.timing(imageOpacity, {toValue: 0, duration: 1000, useNativeDriver: true,}).start(() => {
+            Animated.timing(imageScale, {toValue: 3, duration: 300, useNativeDriver: true,}).start();
+            Animated.timing(imageOpacity, {toValue: 0.2, duration: 300, useNativeDriver: true,}).start(() => {
+
               setPurchaseOpen(false); 
               setpackOpen(true); 
               dispatch(setCredits(value = user.credits - cardPack.cost)); 
@@ -217,7 +220,7 @@ export function CardPackItem({cardPack, user}){
       </Modal>
 
       {/* opened up modal */}
-      <Modal visible={packOpen} animationType="none" transparent>
+      <Modal visible={packOpen} animationType="none">
         <TouchableOpacity activeOpacity={1} className="backdrop-blur-md flex-1 items-center justify-center bg-primary bg-opacity-90" onPress={() => setpackOpen(false)}>
 
           <TouchableOpacity onPress={() => { setpackOpen(false)}} activeOpacity={0.8}>

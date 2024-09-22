@@ -18,21 +18,21 @@ const exercises = [
       {
         image: images.squareBreathing,
         title: "Square Breathing",
-        pagePath: "../(exercises)/squareBreathing",
+        pagePath: "../WIP",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
     
       },
       {
         image: images.spotDiff,
         title: "Spot The Difference",
-        pagePath: "../(exercises)/spotDiff",
+        pagePath: "../WIP",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
 
       },
       {
         image: images.mouseRun,
         title: "Mouse Run",
-        pagePath: "../(exercises)/mouseRun",
+        pagePath: "../WIP",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
 
       },
@@ -44,21 +44,21 @@ const exercises = [
       {
         image: images.squareBreathing,
         title: "Square Breathing",
-        pagePath: "../(exercises)/squareBreathing",
+        pagePath: "../WIP",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
 
       },
       {
         image: images.spotDiff,
         title: "Spot The Difference",
-        pagePath: "../(exercises)/spotDiff",
+        pagePath: "../WIP",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
 
       },
       {
         image: images.squareBreathing,
         title: "hyper Duo-Decohedron Breathing?",
-        pagePath: "../(exercises)/squareBreathing",
+        pagePath: "../WIP",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
 
       },
@@ -70,14 +70,14 @@ const exercises = [
       {
         image: images.mouseRun,
         title: "Mouse Run",
-        pagePath: "../(exercises)/mouseRun",
+        pagePath: "../WIP",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
 
       },
       {
         image: images.flow,
         title: "Flow",
-        pagePath: "../(exercises)/flow",
+        pagePath: "../WIP",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
 
       },
@@ -89,14 +89,14 @@ const exercises = [
       {
         image: images.mouseRun,
         title: "Deep Reading",
-        pagePath: "../(exercises)/deepReading",
+        pagePath: "../WIP",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
 
       },
       {
         image: images.flow,
         title: "Tracing",
-        pagePath: "../(exercises)/deepReading",
+        pagePath: "../WIP",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum eveniet dicta nam, expedita sed nesciunt!",
 
       },

@@ -18,15 +18,7 @@ export default function HomeScreen({navigation}){
         <HeaderWithProfile title={"Home"}/>
 
         <View className="bg-tertiary">
-          <Text className="text-white100 opacity-75 m-8">item 1</Text>
-        </View>
-
-        <View className="bg-secondary">
-          <Text className="text-white100 opacity-75 m-8">item 2</Text>
-        </View>
-
-        <View className="bg-tertiary">
-          <Text className="text-white100 opacity-75 m-8">item 3</Text>
+          <Text className="text-white100 opacity-75 m-8">Work in Progress</Text>
         </View>
 
       </ScrollView>
